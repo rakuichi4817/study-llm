@@ -1,0 +1,39 @@
+{
+    "type": "json_schema",
+    "json_schema": {
+        "name": "ExtractPoemResponse",
+        "description": "テキストに含まれるポエムのリスト",
+        "strict": true,
+        "schema": {
+            "type": "object",
+            "properties": {
+                "poem_messages": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sentence": {
+                                "type": "string",
+                                "description": "テキストに含まれていたポエム的な内容"
+                            },
+                            "reason": {
+                                "type": "string",
+                                "description": "ポエムと判断された理由"
+                            },
+                            "sentence_type": {
+                                "type": "string",
+                                "description": "内容が自分の話か、お店の話かを判定してください",
+                                "enum": ["自分のこと", "お店のこと"]
+                            }
+                        },
+
+                        "required": ["sentence", "reason", "sentence_type"],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": ["poem_messages"],
+            "additionalProperties": false
+        }
+    }
+}
